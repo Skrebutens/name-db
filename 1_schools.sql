@@ -102,3 +102,30 @@ INSERT INTO schools (`name`,`founder`,`class_10`,`class_11`,`class_12`) VALUES
 ,('Rīgas 31. vidusskola','Rīgas valstspilsētas pašvaldība',23,19,14)
 ,('Rīgas Kultūru vidusskola','Rīgas valstspilsētas pašvaldība',112,91,91)
 ,('Rīgas Valsts 2. ģimnāzija','Rīgas valstspilsētas pašvaldība',175,171,152);
+
+-- Atlasīt pašvaldības skolas nosaukumus (SELECT, WHERE) 
+SELECT * FROM schools WHERE founder = 'Rīgas valstspilsētas pašvaldība';
+
+-- Saskaitīt cik daudz pašvaldības skolu (COUNT) https://www.w3schools.com/sql/sql_count.asp
+SELECT COUNT(founder)
+FROM schools
+WHERE founder = 'Rīgas valstspilsētas pašvaldība';
+
+-- Atlasīt unikālus skolas dibinātājus (DISTINCT) https://www.w3schools.com/sql/sql_distinct.asp
+SELECT DISTINCT founder FROM schools;
+
+-- Atlasīt top 5 skolas pēc 12 klašu skolēnu skaita (ORDER BY, LIMIT) https://www.w3schools.com/sql/sql_top.asp
+SELECT class_12, name
+FROM schools
+ORDER BY class_12 DESC
+LIMIT 5;
+
+-- Atlasīt top 5 skolas pēc mazāka 10 klašu skolēnu skaita (ORDER BY, LIMIT) https://www.w3schools.com/sql/sql_top.asp
+SELECT class_10, name
+FROM schools
+ORDER BY class_10 ASC
+LIMIT 5;
+
+-- Atlasīt skolas nosaukumus un kopēju vidusskolas skolēnu skaitu (https://www.quora.com/How-do-I-sum-two-columns-in-SQL)
+SELECT  name, class_10 + class_11 + class_12 AS skolēnu_skaits 
+FROM schools; 
